@@ -155,8 +155,8 @@ export default function GiftClient({ data }: Props) {
         <div className="corner tl"></div><div className="corner tr"></div>
         <div className="corner bl"></div><div className="corner br"></div>
       </div>
-      <div className="side-text left">BIRTHDAY • CELEBRATION</div>
-      <div className="side-text right">WITH LOVE • FOR YOU</div>
+      <div className="side-text left">احتفال • عيد ميلاد</div>
+      <div className="side-text right">بكل الحب • لأجلك</div>
 
       {/* كانفاس الكونفيتي في المقدمة */}
       <canvas ref={confettiRef} id="confetti-canvas" style={{ position: 'fixed', inset: 0, zIndex: 100, pointerEvents: 'none' }} />
@@ -201,13 +201,13 @@ export default function GiftClient({ data }: Props) {
       ))}
 
       {/* شريط تنقل سريع عائم أسفل الشاشة */}
-      <nav className="floating-navbar" aria-label="Quick jump">
-        <button onClick={() => scrollTo('intro')} title="Home">✨</button>
-        <button onClick={() => scrollTo('cake')} title="The Cake">🎂</button>
-        <button onClick={() => scrollTo('letter')} title="Message">💌</button>
-        <button onClick={() => scrollTo('moments')} title="Moments">📸</button>
-        <button onClick={() => scrollTo('video')} title="Video">🎬</button>
-        <button onClick={() => scrollTo('date')} title="Question">💍</button>
+      <nav className="floating-navbar" aria-label="التنقل السريع">
+        <button onClick={() => scrollTo('intro')} title="البداية">✨</button>
+        <button onClick={() => scrollTo('cake')} title="الكيكة">🎂</button>
+        <button onClick={() => scrollTo('letter')} title="الرسالة">💌</button>
+        <button onClick={() => scrollTo('moments')} title="الذكريات">📸</button>
+        <button onClick={() => scrollTo('video')} title="الفيديو">🎬</button>
+        <button onClick={() => scrollTo('date')} title="سؤال مهم">💍</button>
       </nav>
 
       {/* أعلام الزينة أعلى الصفحة */}
@@ -216,12 +216,12 @@ export default function GiftClient({ data }: Props) {
       {/* ── 1. SECTION: HERO / INTRO ── */}
       <section id="intro" className="gift-section" style={{ minHeight: '92vh', paddingTop: '80px' }}>
         <div className="content-wrapper">
-          <p className="subtitle">✦ Something special is waiting ✦</p>
-          <h1 className="gift-title">A Gift <br /><span>just for You</span></h1>
+          <p className="subtitle">✦ شيء مميز بانتظارك ✦</p>
+          <h1 className="gift-title">هدية <br /><span>خصيصاً لك</span></h1>
           <div className="crown-icon">👑</div>
           <div className="dots">• • •</div>
           <p className="description">
-            "Today is a day as beautiful as you are. I've prepared a little digital surprise to celebrate your special moment."
+            "اليوم يوم مميز وجميل تماماً مثلك.. جهزت لك مفاجأة لطيفة لنحتفل معاً بهذه اللحظة السعيدة."
           </p>
           <button className="btn-primary" onClick={() => scrollTo('cake')}>
             ابدأ الاحتفال 🎁
@@ -258,9 +258,23 @@ export default function GiftClient({ data }: Props) {
 
           {!isCakeBlown ? (
             <>
-              <h2 className="gift-title">Make a wish, <span>{data.name}</span> 👑</h2>
-              <p className="description">
-                Take a deep breath, make a heartfelt wish, and blow out the candle!
+              <h2
+                className="gift-title"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                  gap: '8px',
+                  direction: 'rtl',
+                }}
+              >
+                <span style={{ color: 'white', fontStyle: 'normal' }}>تمنَّ أمنية يا</span>
+                <span style={{ color: '#f472b6', fontStyle: 'italic' }}>{data.name}</span>
+                <span style={{ fontStyle: 'normal' }}>👑</span>
+              </h2>
+              <p className="description" dir="rtl">
+                خذ نفساً عميقاً، تمنَّ أمنية من قلبك، واطفئ الشمعة!
               </p>
               <button
                 className="btn-primary"
@@ -274,9 +288,9 @@ export default function GiftClient({ data }: Props) {
             </>
           ) : (
             <>
-              <h2 className="gift-title" style={{ marginBottom: '1rem' }}>Happy Birthday, habiby! 🎂</h2>
+              <h2 className="gift-title" style={{ marginBottom: '1rem' }}>كل سنة وأنت طيب يا حبيبي! 🎂</h2>
               <p className="description">
-                May all your wishes and dreams come true this year! ✨
+                أتمنى أن تتحقق كل أمنياتك وأحلامك في عامك الجديد! ✨
               </p>
               <button className="btn-secondary" onClick={() => setIsCakeBlown(false)}>
                 أشعلها مجدداً ✨
@@ -318,13 +332,13 @@ export default function GiftClient({ data }: Props) {
               />
             </div>
 
-            <h2 className="letter-title" style={{ marginTop: '0', color: '#f472b6' }}>To my favorite person,</h2>
+            <h2 className="letter-title" style={{ marginTop: '0', color: '#f472b6' }}>إلى الشخص المفضل لقلبي،</h2>
 
             <div className="letter-scroll-area">
-              <div className="letter-body" style={{ color: '#f472b6' }}>{data.message}</div>
+              <div className="letter-body" style={{ color: '#f472b6', direction: 'ltr', textAlign: 'left' }}>{data.message}</div>
               <div className="letter-divider"><span>✦</span></div>
               <div className="signature" style={{ color: '#f472b6' }}>
-                <p>With all my love,</p>
+                <p>بكل حبي،</p>
                 <p>{data.senderName || 'your love'} ✨</p>
               </div>
             </div>
@@ -337,9 +351,9 @@ export default function GiftClient({ data }: Props) {
       {/* ── 4. SECTION: OUR MEMORIES ── */}
       <section id="moments" className="gift-section">
         <div className="content-wrapper">
-          <h2 className="gift-title" style={{ fontStyle: 'italic', marginBottom: '0.2rem' }}>Our Memories</h2>
+          <h2 className="gift-title" style={{ fontStyle: 'italic', marginBottom: '0.2rem' }}>ذكرياتنا الجميلة</h2>
           <p className="subtitle" style={{ color: '#94a3b8', marginBottom: '1.2rem' }}>
-            {isAlbumOpen ? `Photo ${currentPhotoIndex + 1} of ${momentsImages.length}` : 'Special Photo Album 📖'}
+            {isAlbumOpen ? `صورة ${currentPhotoIndex + 1} من ${momentsImages.length}` : 'ألبوم صور خاص 📖'}
           </p>
 
           {!isAlbumOpen ? (
@@ -470,7 +484,7 @@ export default function GiftClient({ data }: Props) {
         <span id="song" style={{ position: 'absolute', top: 0, opacity: 0, pointerEvents: 'none' }} />
         <div className="content-wrapper">
           <h2 className="gift-title" style={{ fontStyle: 'italic', marginBottom: '1.5rem' }}>
-            a video for you
+            فيديو خصيصاً لك
           </h2>
 
           <div className="video-card-container">
@@ -496,8 +510,8 @@ export default function GiftClient({ data }: Props) {
       {/* ── 6. SECTION: THE QUESTION ── */}
       <section id="date" className="gift-section">
         <div className="content-wrapper">
-          <p className="subtitle">✦ IMPORTANT QUESTION ✦</p>
-          <h1 className="gift-title">Will you stay with me forever?</h1>
+          <p className="subtitle">✦ سؤال مهم جداً ✦</p>
+          <h1 className="gift-title">هتفضل معايا للأبد؟</h1>
 
           {!hasSaidYes ? (
             <>
@@ -541,10 +555,10 @@ export default function GiftClient({ data }: Props) {
                 <Image src="/images/bear-hug.gif" alt="Yay!" fill style={{ objectFit: 'cover', borderRadius: '50%' }} unoptimized />
               </div>
               <h2 className="gift-title" style={{ color: '#f472b6', fontSize: '2.2rem', marginTop: '10px' }}>
-                Knew you would say yes! ❤️
+                كنت عارفة إنك هتوافق! ❤️
               </h2>
               <p className="description" style={{ color: '#fbcfe8', fontSize: '1.05rem', margin: '10px auto' }}>
-                Forever & always with you babe 💍✨
+                معاك علطول وللأبد يا روحي 💍✨
               </p>
             </div>
           )}
@@ -558,7 +572,7 @@ export default function GiftClient({ data }: Props) {
           صُنع بكل حبي لك يا هشام ❤️
         </p>
         <p style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '6px', letterSpacing: '0.15em' }}>
-          FOREVER & ALWAYS
+          دائماً وللأبد
         </p>
         <button
           onClick={() => scrollTo('intro')}

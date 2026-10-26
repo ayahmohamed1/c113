@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
 export const metadata: Metadata = {
-  title: 'A Special Gift For You 🎁',
-  description: 'A heartfelt birthday message just for you.',
+  title: 'هدية خاصة لك 🎁',
+  description: 'رسالة عيد ميلاد خاصة من القلب لك.',
 }
 
 export default function RootLayout({
@@ -11,7 +11,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" dir="ltr">
+    <html lang="ar">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

@@ -10,10 +10,10 @@ interface PageProps {
 // Generate metadata per gift
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const data = giftData[params.id.toLowerCase()]
-  if (!data) return { title: 'Gift Not Found' }
+  if (!data) return { title: 'الهدية غير موجودة' }
   return {
-    title: `Happy Birthday ${data.name}! 🎂`,
-    description: `A special birthday message for ${data.name}`,
+    title: `عيد ميلاد سعيد يا ${data.name}! 🎂`,
+    description: `رسالة عيد ميلاد خاصة لـ ${data.name}`,
   }
 }
 
